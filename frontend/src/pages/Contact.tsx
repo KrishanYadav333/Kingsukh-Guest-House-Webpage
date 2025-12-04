@@ -44,7 +44,18 @@ const HeroSubtitle = styled.p`
 
 const ContactSection = styled.section`
   padding: 100px 0;
-  background: white;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  }
 `;
 
 const Container = styled.div`
@@ -95,14 +106,36 @@ const ContactItem = styled.div`
   display: flex;
   align-items: flex-start;
   margin-bottom: 2.5rem;
-  padding: 1.5rem;
-  background: #f8f9fa;
+  padding: 2rem;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
   border-left: 4px solid #d4af37;
-  transition: all 0.3s ease;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.5s ease;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+    border-radius: 13px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
   
   &:hover {
-    transform: translateX(10px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(15px) translateY(-5px);
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25);
+    border-color: #d4af37;
+  }
+  
+  &:hover::before {
+    opacity: 1;
   }
 `;
 
@@ -131,9 +164,24 @@ const ContactDetails = styled.div`
 `;
 
 const FormSection = styled.div`
-  background: #f8f9fa;
+  background: linear-gradient(145deg, #f8f9fa, #ffffff);
   padding: 3rem;
-  border: 1px solid #e0e0e0;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.03), transparent);
+    border-radius: 18px;
+    pointer-events: none;
+  }
 `;
 
 const FormTitle = styled.h3`
@@ -156,9 +204,24 @@ const FormTitle = styled.h3`
 const BookingSection = styled.div`
   background: linear-gradient(135deg, #d4af37, #f4d03f);
   color: #1a1a1a;
-  padding: 2rem;
+  padding: 2.5rem;
   margin-bottom: 2rem;
-  border-radius: 0;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #f4d03f, #d4af37);
+    border-radius: 17px;
+    z-index: -1;
+  }
   
   h4 {
     font-family: 'Playfair Display', serif;
@@ -194,17 +257,19 @@ const FormRow = styled.div`
 `;
 
 const Input = styled.input`
-  padding: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 0;
+  padding: 1.2rem;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  border-radius: 10px;
   font-size: 1rem;
-  background: white;
-  transition: all 0.3s ease;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
   
   &:focus {
     outline: none;
     border-color: #d4af37;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15), 0 8px 25px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
   }
   
   &::placeholder {
@@ -213,20 +278,22 @@ const Input = styled.input`
 `;
 
 const TextArea = styled.textarea`
-  padding: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 0;
+  padding: 1.2rem;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  border-radius: 10px;
   font-size: 1rem;
-  background: white;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
   resize: vertical;
   min-height: 120px;
   font-family: inherit;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
   
   &:focus {
     outline: none;
     border-color: #d4af37;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15), 0 8px 25px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
   }
   
   &::placeholder {
@@ -238,15 +305,18 @@ const SubmitButton = styled.button`
   background: linear-gradient(135deg, #d4af37, #f4d03f);
   color: #1a1a1a;
   border: none;
-  padding: 1rem 2rem;
-  font-weight: 600;
+  padding: 1.2rem 2.5rem;
+  font-weight: 700;
   font-size: 14px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   
   &::before {
     content: '';
@@ -265,8 +335,8 @@ const SubmitButton = styled.button`
   }
   
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
   }
   
   &:disabled {

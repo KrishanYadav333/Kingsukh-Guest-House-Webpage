@@ -440,8 +440,8 @@ const Services: React.FC = () => {
                 to ensure your comfort and satisfaction. We take pride in our ability to anticipate 
                 your needs and exceed your expectations at every turn.
               </p>
-              <BookButton onClick={() => window.location.href = '/contact'}>
-                Experience Luxury
+              <BookButton onClick={() => window.open('https://api.whatsapp.com/send?phone=919007062180', '_blank')}>
+                BOOK NOW
               </BookButton>
             </PremiumContent>
             

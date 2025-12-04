@@ -319,7 +319,7 @@ const Rooms: React.FC = () => {
                     ))}
                   </RoomMeta>
                   
-                  <BookButton onClick={() => handleBookRoom(room.id, room.name)}>
+                  <BookButton onClick={() => window.open('https://api.whatsapp.com/send?phone=919007062180', '_blank')}>
                     BOOK NOW
                   </BookButton>
                 </RoomContent>

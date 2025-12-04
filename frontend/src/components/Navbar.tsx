@@ -314,7 +314,7 @@ const Navbar: React.FC = () => {
           </Logo>
 
           <RightNav isOpen={isOpen}>
-            <li><BookingBtn to="/contact">BOOK NOW</BookingBtn></li>
+            <li><BookingBtn as="button" onClick={() => window.open('https://api.whatsapp.com/send?phone=919007062180', '_blank')}>BOOK NOW</BookingBtn></li>
           </RightNav>
           
           <MenuToggle isScrolled={isScrolled} onClick={() => setIsOpen(!isOpen)}>
