@@ -20,6 +20,10 @@ yarn-error.log*
 *.sqlite
 *.sqlite3
 
+# Data files with personal information
+/backend/data/contacts.json
+/backend/data/bookings.json
+
 # Logs
 logs/
 *.log
