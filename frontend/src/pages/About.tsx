@@ -44,7 +44,18 @@ const HeroSubtitle = styled.p`
 
 const ContentSection = styled.section`
   padding: 100px 0;
-  background: white;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  }
 `;
 
 const Container = styled.div`
@@ -96,17 +107,21 @@ const AboutContent = styled.div`
 const AboutImage = styled.div`
   position: relative;
   overflow: hidden;
-  border-radius: 0;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+  border: 3px solid rgba(212, 175, 55, 0.3);
   
   img {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.5s ease;
+    filter: brightness(0.95) contrast(1.05);
   }
   
   &:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
+    filter: brightness(1.1) contrast(1.1);
   }
   
   &::before {
@@ -116,15 +131,33 @@ const AboutImage = styled.div`
     left: 20px;
     right: 20px;
     bottom: 20px;
-    border: 2px solid #d4af37;
+    border: 2px solid rgba(212, 175, 55, 0.6);
+    border-radius: 15px;
     z-index: 1;
     pointer-events: none;
+    transition: all 0.5s ease;
+  }
+  
+  &:hover::before {
+    border-color: #d4af37;
+    transform: scale(1.02);
   }
 `;
 
 const StatsSection = styled.section`
   padding: 80px 0;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f4 100%);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  }
 `;
 
 const StatsGrid = styled.div`
@@ -135,12 +168,44 @@ const StatsGrid = styled.div`
 
 const StatCard = styled.div`
   text-align: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.5s ease;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+    border-radius: 18px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
+    border-color: #d4af37;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
   
   h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    color: #d4af37;
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 1rem;
     font-weight: 700;
   }
@@ -155,7 +220,18 @@ const StatCard = styled.div`
 
 const FeaturesSection = styled.section`
   padding: 100px 0;
-  background: white;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  }
 `;
 
 const FeaturesWrapper = styled.div`
@@ -178,16 +254,36 @@ const FeaturesGrid = styled.div`
 const FeatureCard = styled.div`
   text-align: center;
   padding: 3rem 2rem;
-  background: #f8f9fa;
-  transition: all 0.4s ease;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  transition: all 0.5s ease;
   flex-shrink: 0;
   width: 350px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15), 0 5px 15px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+    border-radius: 18px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
   
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25), 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-color: #d4af37;
+  }
+  
+  &:hover::before {
+    opacity: 1;
   }
 `;
 
@@ -201,6 +297,33 @@ const FeatureIcon = styled.div`
   justify-content: center;
   margin: 0 auto 2rem;
   color: #1a1a1a;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.5s ease;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f4d03f, #d4af37);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  ${FeatureCard}:hover & {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+  }
+  
+  ${FeatureCard}:hover &::before {
+    opacity: 1;
+  }
 `;
 
 const FeatureTitle = styled.h3`
@@ -208,6 +331,19 @@ const FeatureTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: #1a1a1a;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #d4af37, #f4d03f);
+    border-radius: 1px;
+  }
 `;
 
 const FeatureDescription = styled.p`

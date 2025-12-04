@@ -43,7 +43,18 @@ const HeroSubtitle = styled.p`
 
 const GallerySection = styled.section`
   padding: 100px 0;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f4 100%);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  }
 `;
 
 const GalleryWrapper = styled.div`
@@ -103,16 +114,34 @@ const GalleryItem = styled.div`
   height: 400px;
   cursor: pointer;
   position: relative;
-  border: 3px solid #d4af37;
-  border-radius: 15px;
+  border: 4px solid #d4af37;
+  border-radius: 25px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3), 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease;
+  box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25), 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.6s ease;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    border-radius: 29px;
+    z-index: -1;
+    transition: all 0.6s ease;
+  }
   
   &:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(212, 175, 55, 0.4), 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-20px) scale(1.05) rotate(2deg);
+    box-shadow: 0 35px 70px rgba(212, 175, 55, 0.4), 0 15px 35px rgba(0, 0, 0, 0.2);
     border-color: #f4d03f;
+  }
+  
+  &:hover::after {
+    border-color: #f4d03f;
+    transform: scale(1.02) rotate(-1deg);
   }
   
   &::before {
@@ -122,9 +151,15 @@ const GalleryItem = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 50%, rgba(244, 208, 63, 0.1) 100%);
     z-index: 1;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
   }
   
   @media (max-width: 768px) {
@@ -137,10 +172,12 @@ const GalleryImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all 0.4s ease;
+  transition: all 0.6s ease;
+  filter: brightness(0.95) contrast(1.05);
   
   ${GalleryItem}:hover & {
-    transform: scale(1.1);
+    transform: scale(1.15);
+    filter: brightness(1.1) contrast(1.1) saturate(1.2);
   }
 `;
 
@@ -177,7 +214,8 @@ const Modal = styled.div<{ show: boolean }>`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(26, 26, 26, 0.9));
+  backdrop-filter: blur(10px);
   z-index: 2000;
   align-items: center;
   justify-content: center;
@@ -188,18 +226,34 @@ const ModalImage = styled.img`
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
+  border-radius: 15px;
+  box-shadow: 0 25px 60px rgba(212, 175, 55, 0.3);
+  border: 3px solid rgba(212, 175, 55, 0.5);
 `;
 
 const CloseButton = styled.button`
   position: absolute;
   top: 2rem;
   right: 2rem;
-  background: none;
+  background: linear-gradient(135deg, #d4af37, #f4d03f);
   border: none;
-  color: white;
-  font-size: 2rem;
+  color: #1a1a1a;
+  font-size: 1.5rem;
   cursor: pointer;
   z-index: 2001;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+  
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+  }
 `;
 
 const Gallery: React.FC = () => {

@@ -66,17 +66,36 @@ const ServicesGrid = styled.div`
 `;
 
 const ServiceCard = styled.div`
-  background: white;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
   padding: 3rem 2rem;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease;
-  border: 1px solid #f0f0f0;
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15), 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s ease;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  border-radius: 20px;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    border-radius: 18px;
+  }
   
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25), 0 10px 25px rgba(0, 0, 0, 0.15);
     border-color: #d4af37;
+  }
+  
+  &:hover::before {
+    opacity: 1;
   }
 `;
 
@@ -89,12 +108,33 @@ const ServiceIcon = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 auto 2rem;
-  font-size: 2.5rem;
   color: #1a1a1a;
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f4d03f, #d4af37);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
   
   ${ServiceCard}:hover & {
-    transform: scale(1.1);
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+  }
+  
+  ${ServiceCard}:hover &::before {
+    opacity: 1;
   }
 `;
 
@@ -103,6 +143,19 @@ const ServiceTitle = styled.h3`
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   color: #1a1a1a;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #d4af37, #f4d03f);
+    border-radius: 1px;
+  }
 `;
 
 const ServiceDescription = styled.p`
@@ -178,6 +231,23 @@ const PremiumContent = styled.div`
 const PremiumImage = styled.div`
   position: relative;
   overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+  border: 3px solid rgba(212, 175, 55, 0.3);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    border-radius: 15px;
+    z-index: 1;
+    pointer-events: none;
+    transition: all 0.4s ease;
+  }
   
   img {
     width: 100%;
@@ -187,7 +257,12 @@ const PremiumImage = styled.div`
   }
   
   &:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
+  }
+  
+  &:hover::before {
+    border-color: #d4af37;
+    transform: scale(1.02);
   }
 `;
 

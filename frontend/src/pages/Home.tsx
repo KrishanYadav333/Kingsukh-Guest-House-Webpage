@@ -665,7 +665,7 @@ const Home: React.FC = () => {
             <RoomContent>
               <RoomName>Cozy Haven Room</RoomName>
               <RoomDescription>Escape to comfort in our Cozy Haven Room, a snug retreat designed for intimate relaxation.</RoomDescription>
-              <DiscoverBtn style={{marginTop: '14px'}} onClick={() => window.open('https://api.whatsapp.com/send?phone=919007062180', '_blank')}>BOOK NOW</DiscoverBtn>
+              <DiscoverBtn style={{marginTop: '22px'}} onClick={() => window.open('https://api.whatsapp.com/send?phone=919007062180', '_blank')}>BOOK NOW</DiscoverBtn>
             </RoomContent>
           </RoomCard>
           

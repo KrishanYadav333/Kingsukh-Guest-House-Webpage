@@ -28,7 +28,18 @@ const SectionTitle = styled.h2`
 
 const RoomsSection = styled.section`
   padding: 40px 0 100px;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f4 100%);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  }
 `;
 
 const Container = styled.div`
@@ -49,15 +60,34 @@ const RoomsGrid = styled.div`
 `;
 
 const RoomCard = styled.div`
-  background: white;
-  border-radius: 0;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s ease;
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15), 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s ease;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
   
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25), 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-color: #d4af37;
+  }
+  
+  &:hover::before {
+    opacity: 1;
   }
 `;
 
@@ -81,18 +111,37 @@ const RoomImage = styled.div<{ bgImage: string }>`
 
 const PriceTag = styled.div`
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(212, 175, 55, 0.95);
-  color: #fff;
-  padding: 8px 16px;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.5px;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #d4af37, #f4d03f);
+  color: #1a1a1a;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 `;
 
 const RoomContent = styled.div`
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(145deg, #ffffff, #fafafa);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #d4af37, #f4d03f);
+    border-radius: 2px;
+  }
 `;
 
 const RoomCategory = styled.p`
@@ -105,10 +154,25 @@ const RoomCategory = styled.p`
 
 const RoomTitle = styled.h3`
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #1a1a1a;
-  margin-bottom: 1rem;
-  font-weight: 400;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #d4af37, #f4d03f);
+    border-radius: 1px;
+  }
 `;
 
 const RoomMeta = styled.div`
@@ -133,21 +197,41 @@ const RoomDescription = styled.p`
 `;
 
 const BookButton = styled.button`
-  background: transparent;
-  color: #d4af37;
-  border: 1px solid #d4af37;
-  padding: 10px 24px;
-  font-weight: 600;
+  background: linear-gradient(135deg, #d4af37, #f4d03f);
+  color: #1a1a1a;
+  border: none;
+  padding: 14px 32px;
+  font-weight: 700;
   font-size: 12px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   width: 100%;
+  border-radius: 30px;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f4d03f, #d4af37);
+    transition: left 0.4s ease;
+    z-index: -1;
+  }
+  
+  &:hover::before {
+    left: 0;
+  }
   
   &:hover {
-    background: #d4af37;
-    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
   }
 `;
 
