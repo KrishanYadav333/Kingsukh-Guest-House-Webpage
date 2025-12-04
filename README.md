@@ -206,6 +206,7 @@ This project is licensed under the **MIT License** - see the LICENSE file for de
 
 ### Developer Contact
 - **Email**: kryshan753@gmail.com
+- **Phone**: +917739449287 (WhatsApp)
 - **Project Repository**: [GitHub Repository Link]
 
 ## Acknowledgments
