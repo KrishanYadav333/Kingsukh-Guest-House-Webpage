@@ -1,5 +1,7 @@
 # Kingsukh Guest House - Luxury Hospitality Website
 
+![Website Preview](./Web%20page%20image.png)
+
 A premium full-stack web application for Kingsukh Guest House featuring luxury design, seamless user experience, and modern web technologies.
 
 ## About Kingsukh Guest House
