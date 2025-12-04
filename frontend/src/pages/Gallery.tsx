@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const GalleryContainer = styled.div`
   padding-top: 100px;
   min-height: 100vh;
-  background: #1a1a1a;
+  background: #fff;
 `;
 
 const HeroSection = styled.section`
@@ -43,6 +43,12 @@ const HeroSubtitle = styled.p`
 
 const GallerySection = styled.section`
   padding: 100px 0;
+  background: #f8f9fa;
+`;
+
+const GalleryWrapper = styled.div`
+  overflow: hidden;
+  width: 100%;
 `;
 
 const Container = styled.div`
@@ -60,8 +66,8 @@ const FilterButtons = styled.div`
 `;
 
 const FilterButton = styled.button<{ active: boolean }>`
-  background: ${props => props.active ? 'linear-gradient(135deg, #d4af37, #f4d03f)' : 'transparent'};
-  color: ${props => props.active ? '#1a1a1a' : '#d4af37'};
+  background: ${props => props.active ? 'linear-gradient(135deg, #d4af37, #f4d03f)' : '#fff'};
+  color: ${props => props.active ? '#1a1a1a' : '#333'};
   border: 2px solid #d4af37;
   padding: 12px 24px;
   font-weight: 600;
@@ -70,6 +76,7 @@ const FilterButton = styled.button<{ active: boolean }>`
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.4s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   
   &:hover {
     background: linear-gradient(135deg, #d4af37, #f4d03f);
@@ -79,33 +86,62 @@ const FilterButton = styled.button<{ active: boolean }>`
 `;
 
 const GalleryGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
   gap: 2rem;
+  width: max-content;
+  animation: trainScroll 120s linear infinite;
   
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+  @keyframes trainScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 `;
 
 const GalleryItem = styled.div`
-  position: relative;
-  overflow: hidden;
-  border-radius: 0;
+  flex-shrink: 0;
+  width: 400px;
+  height: 400px;
   cursor: pointer;
+  position: relative;
+  border: 3px solid #d4af37;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3), 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
   
   &:hover {
-    transform: scale(1.05);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(212, 175, 55, 0.4), 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-color: #f4d03f;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  @media (max-width: 768px) {
+    width: 300px;
+    height: 300px;
   }
 `;
 
 const GalleryImage = styled.img`
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
   transition: all 0.4s ease;
+  
+  ${GalleryItem}:hover & {
+    transform: scale(1.1);
+  }
 `;
 
 const GalleryOverlay = styled.div`
@@ -171,26 +207,24 @@ const Gallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const galleryItems = [
-    { id: 1, src: '/images/out.jpg', title: 'Exterior View', category: 'exterior' },
-    { id: 2, src: '/images/random reception image.jpg', title: 'Reception Area', category: 'interior' },
-    { id: 3, src: '/images/room1.jpg', title: 'Deluxe Room', category: 'rooms' },
-    { id: 4, src: '/images/outside look.png', title: 'Suite Interior', category: 'rooms' },
-    { id: 5, src: '/images/Bedroom pic.png', title: 'Cozy Room', category: 'rooms' },
-    { id: 6, src: '/images/recep.jpg', title: 'Reception', category: 'interior' },
-    { id: 7, src: '/images/baranti.webp', title: 'Lake View', category: 'views' },
-    { id: 8, src: '/images/ayodhya.webp', title: 'Scenic Beauty', category: 'views' },
-    { id: 9, src: '/images/mithonDam.webp', title: 'Dam View', category: 'views' },
-    { id: 10, src: '/images/palash.webp', title: 'Natural Surroundings', category: 'views' },
-    { id: 11, src: '/images/large.jpg', title: 'Spacious Room', category: 'rooms' },
-    { id: 12, src: '/images/1.jpg', title: 'Property View', category: 'exterior' },
-    { id: 13, src: '/images/small.jpg', title: 'Cozy Haven', category: 'rooms' },
-    { id: 14, src: '/images/header.jpg', title: 'Guest House', category: 'exterior' },
-    { id: 15, src: '/images/view from window.png', title: 'Window View', category: 'views' }
+    { id: 1, src: '/images/1.jpg', title: 'Property View' },
+    { id: 2, src: '/images/ayodhya.webp', title: 'Ayodhya Hills' },
+    { id: 3, src: '/images/baranti.webp', title: 'Baranti Lake' },
+    { id: 4, src: '/images/large.jpg', title: 'Bedroom' },
+    { id: 5, src: '/images/header.jpg', title: 'Guest House' },
+    { id: 6, src: '/images/large.jpg', title: 'Spacious Room' },
+    { id: 7, src: '/images/mithonDam.webp', title: 'Mithon Dam' },
+    { id: 8, src: '/images/out.jpg', title: 'Exterior View' },
+    { id: 9, src: '/images/out.jpg', title: 'Outside View' },
+    { id: 10, src: '/images/palash.webp', title: 'Palash Bungalow' },
+    { id: 11, src: '/images/recep.jpg', title: 'Reception Area' },
+    { id: 12, src: '/images/recep.jpg', title: 'Reception' },
+    { id: 13, src: '/images/room1.jpg', title: 'Deluxe Room' },
+    { id: 14, src: '/images/small.jpg', title: 'Cozy Room' },
+    { id: 15, src: '/images/room1.jpg', title: 'Window View' }
   ];
 
-  const filteredItems = activeFilter === 'all' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === activeFilter);
+
 
   const filters = [
     { key: 'all', label: 'All' },
@@ -212,28 +246,15 @@ const Gallery: React.FC = () => {
 
       <GallerySection>
         <Container>
-          <FilterButtons>
-            {filters.map(filter => (
-              <FilterButton
-                key={filter.key}
-                active={activeFilter === filter.key}
-                onClick={() => setActiveFilter(filter.key)}
-              >
-                {filter.label}
-              </FilterButton>
-            ))}
-          </FilterButtons>
-
-          <GalleryGrid>
-            {filteredItems.map(item => (
-              <GalleryItem key={item.id} onClick={() => setSelectedImage(item.src)}>
-                <GalleryImage src={item.src} alt={item.title} />
-                <GalleryOverlay>
-                  <GalleryTitle>{item.title}</GalleryTitle>
-                </GalleryOverlay>
+          <GalleryWrapper>
+            <GalleryGrid>
+            {[...galleryItems, ...galleryItems].map((item, index) => (
+              <GalleryItem key={`${item.id}-${index}`} onClick={() => setSelectedImage(item.src)}>
+                <GalleryImage src={item.src} alt={item.title} onError={(e) => console.log('Image failed to load:', item.src)} />
               </GalleryItem>
             ))}
-          </GalleryGrid>
+            </GalleryGrid>
+          </GalleryWrapper>
         </Container>
       </GallerySection>
 

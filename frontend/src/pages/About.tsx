@@ -158,10 +158,21 @@ const FeaturesSection = styled.section`
   background: white;
 `;
 
+const FeaturesWrapper = styled.div`
+  overflow: hidden;
+  width: 100%;
+`;
+
 const FeaturesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
   gap: 3rem;
+  width: max-content;
+  animation: featureScroll 60s linear infinite;
+  
+  @keyframes featureScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 `;
 
 const FeatureCard = styled.div`
@@ -169,10 +180,14 @@ const FeatureCard = styled.div`
   padding: 3rem 2rem;
   background: #f8f9fa;
   transition: all 0.4s ease;
+  flex-shrink: 0;
+  width: 350px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   }
 `;
 
@@ -185,7 +200,7 @@ const FeatureIcon = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 auto 2rem;
-  font-size: 2rem;
+  color: #1a1a1a;
 `;
 
 const FeatureTitle = styled.h3`
@@ -198,6 +213,38 @@ const FeatureTitle = styled.h3`
 const FeatureDescription = styled.p`
   color: #666;
   line-height: 1.6;
+`;
+
+const SectionTitleWrapper = styled.div`
+  text-align: center;
+  margin-bottom: 4rem;
+  
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: #d4af37;
+    }
+  }
+  
+  p {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
 `;
 
 const About: React.FC = () => {
@@ -235,7 +282,7 @@ const About: React.FC = () => {
             </AboutContent>
             
             <AboutImage>
-              <img src="/images/random reception image.jpg" alt="Reception Area" />
+              <img src="/images/recep.jpg" alt="Reception Area" />
             </AboutImage>
           </AboutGrid>
         </Container>
@@ -266,66 +313,158 @@ const About: React.FC = () => {
 
       <FeaturesSection>
         <Container>
-          <div className="section-title">
+          <SectionTitleWrapper>
             <h2>Why Choose Kingsukh</h2>
             <p>Experience the difference that makes us special</p>
-          </div>
+          </SectionTitleWrapper>
           
-          <FeaturesGrid>
-            <FeatureCard>
-              <FeatureIcon>🏞️</FeatureIcon>
-              <FeatureTitle>Prime Location</FeatureTitle>
-              <FeatureDescription>
-                Located in the heart of Baranti, offering breathtaking views of the lake and 
-                surrounding hills, perfect for nature lovers.
-              </FeatureDescription>
-            </FeatureCard>
-            
-            <FeatureCard>
-              <FeatureIcon>🛏️</FeatureIcon>
-              <FeatureTitle>Luxury Comfort</FeatureTitle>
-              <FeatureDescription>
-                Premium rooms equipped with modern amenities, ensuring your stay is comfortable 
-                and memorable with attention to every detail.
-              </FeatureDescription>
-            </FeatureCard>
-            
-            <FeatureCard>
-              <FeatureIcon>🍽️</FeatureIcon>
-              <FeatureTitle>Culinary Excellence</FeatureTitle>
-              <FeatureDescription>
-                Savor authentic local cuisine and international dishes prepared by our expert 
-                chefs using fresh, locally sourced ingredients.
-              </FeatureDescription>
-            </FeatureCard>
-            
-            <FeatureCard>
-              <FeatureIcon>🎯</FeatureIcon>
-              <FeatureTitle>Personalized Service</FeatureTitle>
-              <FeatureDescription>
-                Our dedicated staff ensures personalized attention to make your stay exceptional, 
-                from arrival to departure.
-              </FeatureDescription>
-            </FeatureCard>
-            
-            <FeatureCard>
-              <FeatureIcon>🌿</FeatureIcon>
-              <FeatureTitle>Eco-Friendly</FeatureTitle>
-              <FeatureDescription>
-                Committed to sustainable tourism practices while preserving the natural beauty 
-                of our surroundings for future generations.
-              </FeatureDescription>
-            </FeatureCard>
-            
-            <FeatureCard>
-              <FeatureIcon>🚗</FeatureIcon>
-              <FeatureTitle>Easy Access</FeatureTitle>
-              <FeatureDescription>
-                Convenient location with easy access to major attractions, transportation hubs, 
-                and local points of interest.
-              </FeatureDescription>
-            </FeatureCard>
-          </FeaturesGrid>
+          <FeaturesWrapper>
+            <FeaturesGrid>
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Prime Location</FeatureTitle>
+                <FeatureDescription>
+                  Located in the heart of Baranti, offering breathtaking views of the lake and surrounding hills, perfect for nature lovers.
+                </FeatureDescription>
+              </FeatureCard>
+              
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V6H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Luxury Comfort</FeatureTitle>
+                <FeatureDescription>
+                  Premium rooms equipped with modern amenities, ensuring your stay is comfortable and memorable with attention to every detail.
+                </FeatureDescription>
+              </FeatureCard>
+              
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Culinary Excellence</FeatureTitle>
+                <FeatureDescription>
+                  Savor authentic local cuisine and international dishes prepared by our expert chefs using fresh, locally sourced ingredients.
+                </FeatureDescription>
+              </FeatureCard>
+              
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Personalized Service</FeatureTitle>
+                <FeatureDescription>
+                  Our dedicated staff ensures personalized attention to make your stay exceptional, from arrival to departure.
+                </FeatureDescription>
+              </FeatureCard>
+              
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Eco-Friendly</FeatureTitle>
+                <FeatureDescription>
+                  Committed to sustainable tourism practices while preserving the natural beauty of our surroundings for future generations.
+                </FeatureDescription>
+              </FeatureCard>
+              
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Easy Access</FeatureTitle>
+                <FeatureDescription>
+                  Convenient location with easy access to major attractions, transportation hubs, and local points of interest.
+                </FeatureDescription>
+              </FeatureCard>
+              
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Prime Location</FeatureTitle>
+                <FeatureDescription>
+                  Located in the heart of Baranti, offering breathtaking views of the lake and surrounding hills, perfect for nature lovers.
+                </FeatureDescription>
+              </FeatureCard>
+              
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V6H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Luxury Comfort</FeatureTitle>
+                <FeatureDescription>
+                  Premium rooms equipped with modern amenities, ensuring your stay is comfortable and memorable with attention to every detail.
+                </FeatureDescription>
+              </FeatureCard>
+              
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Culinary Excellence</FeatureTitle>
+                <FeatureDescription>
+                  Savor authentic local cuisine and international dishes prepared by our expert chefs using fresh, locally sourced ingredients.
+                </FeatureDescription>
+              </FeatureCard>
+              
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Personalized Service</FeatureTitle>
+                <FeatureDescription>
+                  Our dedicated staff ensures personalized attention to make your stay exceptional, from arrival to departure.
+                </FeatureDescription>
+              </FeatureCard>
+              
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Eco-Friendly</FeatureTitle>
+                <FeatureDescription>
+                  Committed to sustainable tourism practices while preserving the natural beauty of our surroundings for future generations.
+                </FeatureDescription>
+              </FeatureCard>
+              
+              <FeatureCard>
+                <FeatureIcon>
+                  <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                  </svg>
+                </FeatureIcon>
+                <FeatureTitle>Easy Access</FeatureTitle>
+                <FeatureDescription>
+                  Convenient location with easy access to major attractions, transportation hubs, and local points of interest.
+                </FeatureDescription>
+              </FeatureCard>
+            </FeaturesGrid>
+          </FeaturesWrapper>
         </Container>
       </FeaturesSection>
     </AboutContainer>

@@ -223,7 +223,11 @@ const Navbar: React.FC = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       
-      if (location.pathname === '/') {
+      if (['/services', '/gallery', '/about', '/contact'].includes(location.pathname)) {
+        // Pages with hero sections: dark navbar on hero, light when scrolled
+        const heroHeight = window.innerHeight * 0.6; // 60vh hero sections
+        setIsScrolled(scrollY > heroHeight - 100);
+      } else if (location.pathname === '/') {
         // Home page: dark navbar on hero, light when scrolled
         const heroHeight = window.innerHeight;
         setIsScrolled(scrollY > heroHeight - 100);

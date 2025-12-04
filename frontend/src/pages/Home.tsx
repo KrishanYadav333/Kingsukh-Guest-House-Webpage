@@ -462,6 +462,8 @@ const DiscoverBtn = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
+  align-self: flex-start;
+  margin-top: auto;
   
   &:hover {
     background: #b8865a;
@@ -663,7 +665,7 @@ const Home: React.FC = () => {
             <RoomContent>
               <RoomName>Cozy Haven Room</RoomName>
               <RoomDescription>Escape to comfort in our Cozy Haven Room, a snug retreat designed for intimate relaxation.</RoomDescription>
-              <DiscoverBtn onClick={() => window.open('https://api.whatsapp.com/send?phone=919007062180', '_blank')}>BOOK NOW</DiscoverBtn>
+              <DiscoverBtn style={{marginTop: '14px'}} onClick={() => window.open('https://api.whatsapp.com/send?phone=919007062180', '_blank')}>BOOK NOW</DiscoverBtn>
             </RoomContent>
           </RoomCard>
           
@@ -690,21 +692,21 @@ const Home: React.FC = () => {
         <GallerySlider>
           <GalleryTrack>
             <GalleryImage src="/images/out.jpg" alt="Exterior View" />
-            <GalleryImage src="/images/random reception image.jpg" alt="Reception" />
+            <GalleryImage src="/images/recep.jpg" alt="Reception" />
             <GalleryImage src="/images/room1.jpg" alt="Room" />
-            <GalleryImage src="/images/Bedroom pic.png" alt="Bedroom" />
-            <GalleryImage src="/images/outside look.png" alt="Outside View" />
+            <GalleryImage src="/images/large.jpg" alt="Spacious Room" />
+            <GalleryImage src="/images/small.jpg" alt="Cozy Room" />
             <GalleryImage src="/images/baranti.webp" alt="Lake View" />
             <GalleryImage src="/images/ayodhya.webp" alt="Scenic Beauty" />
             <GalleryImage src="/images/mithonDam.webp" alt="Dam View" />
+            <GalleryImage src="/images/palash.webp" alt="Natural Beauty" />
+            <GalleryImage src="/images/header.jpg" alt="Guest House" />
+            <GalleryImage src="/images/1.jpg" alt="Property View" />
             <GalleryImage src="/images/out.jpg" alt="Exterior View" />
-            <GalleryImage src="/images/random reception image.jpg" alt="Reception" />
+            <GalleryImage src="/images/recep.jpg" alt="Reception" />
             <GalleryImage src="/images/room1.jpg" alt="Room" />
-            <GalleryImage src="/images/Bedroom pic.png" alt="Bedroom" />
-            <GalleryImage src="/images/outside look.png" alt="Outside View" />
-            <GalleryImage src="/images/baranti.webp" alt="Lake View" />
-            <GalleryImage src="/images/ayodhya.webp" alt="Scenic Beauty" />
-            <GalleryImage src="/images/mithonDam.webp" alt="Dam View" />
+            <GalleryImage src="/images/large.jpg" alt="Spacious Room" />
+            <GalleryImage src="/images/small.jpg" alt="Cozy Room" />
           </GalleryTrack>
         </GallerySlider>
       </GallerySection>

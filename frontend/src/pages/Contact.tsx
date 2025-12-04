@@ -284,12 +284,12 @@ const SubmitButton = styled.button`
 const MapSection = styled.section`
   padding: 0;
   height: 400px;
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  font-size: 1.2rem;
+  
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
 `;
 
 const Contact: React.FC = () => {
@@ -378,7 +378,11 @@ const Contact: React.FC = () => {
               </p>
               
               <ContactItem>
-                <ContactIcon>📍</ContactIcon>
+                <ContactIcon>
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </ContactIcon>
                 <ContactDetails>
                   <h4>Address</h4>
                   <p>Beside Barshal Water Tank, Manpur, Barhanti, West Bengal 723156</p>
@@ -386,7 +390,11 @@ const Contact: React.FC = () => {
               </ContactItem>
               
               <ContactItem>
-                <ContactIcon>📧</ContactIcon>
+                <ContactIcon>
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                  </svg>
+                </ContactIcon>
                 <ContactDetails>
                   <h4>Email</h4>
                   <p>kkghosh0099@gmail.com</p>
@@ -394,7 +402,11 @@ const Contact: React.FC = () => {
               </ContactItem>
               
               <ContactItem>
-                <ContactIcon>📞</ContactIcon>
+                <ContactIcon>
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                  </svg>
+                </ContactIcon>
                 <ContactDetails>
                   <h4>Phone</h4>
                   <p>+91 9007062180</p>
@@ -470,7 +482,13 @@ const Contact: React.FC = () => {
       </ContactSection>
 
       <MapSection>
-        <p>Interactive Map Coming Soon</p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.123456789!2d86.8571!3d23.5863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM1JzEwLjciTiA4NsKwNTEnMjUuNiJF!5e0!3m2!1sen!2sin!4v1234567890"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Kingsukh Guest House Location"
+        />
       </MapSection>
     </ContactContainer>
   );
