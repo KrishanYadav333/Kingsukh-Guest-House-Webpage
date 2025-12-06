@@ -2,6 +2,8 @@
 
 ![Website Preview](./Web%20page%20image.png)
 
+🌐 **Live Website**: [https://kingsukh-guest-house-webpage.onrender.com/](https://kingsukh-guest-house-webpage.onrender.com/)
+
 A premium full-stack web application for Kingsukh Guest House featuring luxury design, seamless user experience, and modern web technologies.
 
 ## About Kingsukh Guest House
@@ -172,15 +174,34 @@ Kingsukh Guest-House Webpage/
 - **Desktop Enhancement**: Full-featured desktop experience
 - **Cross-Browser Support**: Compatible with all modern browsers
 
-## Deployment
+## Live Deployment
 
-### Backend Deployment Options
+🌐 **Production Website**: [https://kingsukh-guest-house-webpage.onrender.com/](https://kingsukh-guest-house-webpage.onrender.com/)
+
+### Current Deployment Details
+- **Platform**: Render (Free Tier)
+- **Deployment Type**: Full-stack (Frontend + Backend)
+- **Build Process**: Automated from GitHub
+- **Domain**: Custom Render subdomain
+- **SSL**: HTTPS enabled
+- **Status**: ✅ Live and Operational
+
+### Deployment Configuration
+- **Root Directory**: `backend`
+- **Build Command**: `npm run build` (installs both backend and frontend dependencies)
+- **Start Command**: `npm start`
+- **Node.js Version**: 22.16.0
+- **Auto-Deploy**: Enabled from main branch
+
+### Alternative Deployment Options
+
+#### Backend Deployment
 - **Heroku**: Easy deployment with Git integration
 - **Railway**: Modern deployment platform
 - **DigitalOcean**: VPS deployment
 - **Vercel**: Serverless deployment
 
-### Frontend Deployment Options
+#### Frontend Deployment
 - **Netlify**: Automatic deployment from Git
 - **Vercel**: Optimized for React applications
 - **AWS S3**: Static website hosting
