@@ -33,15 +33,18 @@ const initDataFiles = () => {
 
 initDataFiles();
 
-// Basic route
-app.get('/', (req, res) => {
-  res.json({ message: 'Kingsukh Guest House API is running!' });
-});
+// Serve static files from React build
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-// Routes
+// API Routes
 app.use('/api/bookings', require('./routes/bookings'));
 app.use('/api/contact', require('./routes/contact'));
 app.use('/api/rooms', require('./routes/rooms'));
+
+// Serve React app for all non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
