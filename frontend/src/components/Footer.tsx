@@ -235,7 +235,7 @@ const Footer: React.FC = () => {
         </FooterContent>
         
         <FooterBottom>
-          <p>&copy; 2024 Kingsukh Guest House. All rights reserved. | Designed with luxury in mind.</p>
+          <p>&copy; {new Date().getFullYear()} Kingsukh Guest House. All rights reserved. | Designed with luxury in mind.</p>
         </FooterBottom>
       </Container>
     </FooterContainer>

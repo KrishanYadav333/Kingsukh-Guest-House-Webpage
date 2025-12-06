@@ -196,7 +196,11 @@ Kingsukh Guest-House Webpage/
 
 ## License
 
-This project is licensed under the **MIT License** - see the LICENSE file for details.
+This project is **proprietary and confidential**. All rights reserved.
+
+**© 2024-present Kingsukh Guest House. Unauthorized copying, distribution, or use is strictly prohibited.**
+
+For licensing inquiries, contact: kryshan753@gmail.com
 
 ## Contact Information
 
