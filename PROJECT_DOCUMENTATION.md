@@ -468,7 +468,7 @@ Redesign the existing website of King Sukh Guest House (https://www.kingsukhgues
 
 ### 🌐 Live Production Deployment
 
-**Production Website**: [https://kingsukh-guest-house-webpage.onrender.com/](https://kingsukh-guest-house-webpage.onrender.com/)
+**Production Website**: [https://kingsukh-guest-house.technology1.workers.dev/](https://kingsukh-guest-house.technology1.workers.dev/)
 
 #### Current Deployment Status
 - **Platform**: Render (Free Tier)
@@ -592,7 +592,7 @@ Redesign the existing website of King Sukh Guest House (https://www.kingsukhgues
 
 **Final Delivery Date**: January 2025
 
-**Live Production URL**: [https://kingsukh-guest-house-webpage.onrender.com/](https://kingsukh-guest-house-webpage.onrender.com/)
+**Live Production URL**: [https://kingsukh-guest-house.technology1.workers.dev/](https://kingsukh-guest-house.technology1.workers.dev/)
 
 **All Objectives Met**: ✅ Enhanced Design | ✅ Full Responsiveness | ✅ Modern Tech Stack | ✅ Performance Optimization | ✅ User Experience | ✅ Documentation | ✅ Live Deployment
 

@@ -2,7 +2,7 @@
 
 ![Website Preview](./Web%20page%20image.png)
 
-🌐 **Live Website**: [https://kingsukh-guest-house-webpage.onrender.com/](https://kingsukh-guest-house-webpage.onrender.com/)
+🌐 **Live Website**: [https://kingsukh-guest-house.technology1.workers.dev/](https://kingsukh-guest-house.technology1.workers.dev/)
 
 A premium full-stack web application for Kingsukh Guest House featuring luxury design, seamless user experience, and modern web technologies.
 
@@ -176,7 +176,7 @@ Kingsukh Guest-House Webpage/
 
 ## Live Deployment
 
-🌐 **Production Website**: [https://kingsukh-guest-house-webpage.onrender.com/](https://kingsukh-guest-house-webpage.onrender.com/)
+🌐 **Production Website**: [https://kingsukh-guest-house.technology1.workers.dev/](https://kingsukh-guest-house.technology1.workers.dev/)
 
 ### Current Deployment Details
 - **Platform**: Render (Free Tier)
@@ -260,3 +260,14 @@ This comprehensive document covers:
 ---
 
 **Built with love for Kingsukh Guest House - Where Luxury Meets Nature**
+## Deploying to Cloudflare
+
+The site runs on a Cloudflare Worker (`worker/index.js`) that serves the React build and the `/api` routes, storing bookings and messages in a KV namespace.
+
+```bash
+cd frontend && npm ci && npm run build && cd ..
+npx wrangler kv namespace create kingsukh-data   # put the id in wrangler.jsonc
+npx wrangler deploy
+```
+
+Read stored data: `npx wrangler kv key get bookings --namespace-id <id> --remote` (or `contacts`).
