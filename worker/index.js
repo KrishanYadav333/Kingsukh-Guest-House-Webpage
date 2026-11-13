@@ -21,6 +21,11 @@ const DAY = 86400000;
 
 const bad = (error, status = 400) => Response.json({ error }, { status });
 const str = (v) => String(v ?? '').slice(0, 1000);
+const authed = (request, env) => {
+  const a = request.headers.get('authorization') || '';
+  const t = env.ADMIN_TOKEN || '';
+  return t.length > 0 && a.length === 7 + t.length && a === `Bearer ${t}`;
+};
 const list = async (kv, key) => JSON.parse((await kv.get(key)) || '[]');
 
 // ponytail: read-modify-write on one KV key can drop a write under concurrent
@@ -43,6 +48,13 @@ export default {
     const post = request.method === 'POST';
 
     if (pathname === '/api/rooms' && request.method === 'GET') return Response.json(ROOMS);
+    const admin = { '/api/bookings': 'bookings', '/api/contact': 'contacts' }[pathname];
+    if (admin && request.method === 'GET') {
+      // ponytail: plain string compare, fine for a long random token; use timingSafeEqual if this grows
+      if (!authed(request, env)) return bad('Not found', 404);
+      const items = await list(kv, admin);
+      return Response.json(items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
+    }
     if (!post) return bad('Not found', 404);
 
     let body;

@@ -270,4 +270,10 @@ npx wrangler kv namespace create kingsukh-data   # put the id in wrangler.jsonc
 npx wrangler deploy
 ```
 
-Read stored data: `npx wrangler kv key get bookings --namespace-id <id> --remote` (or `contacts`).
+Admin access: set a secret token once, then read bookings and messages over the API. Without the token both endpoints return 404.
+
+```bash
+openssl rand -hex 24 | npx wrangler secret put ADMIN_TOKEN
+curl -H "Authorization: Bearer <token>" https://<your-site>/api/bookings
+curl -H "Authorization: Bearer <token>" https://<your-site>/api/contact
+```
